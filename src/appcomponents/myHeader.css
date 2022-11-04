@@ -1,0 +1,50 @@
+.headercont {
+    display: flex;
+    flex-direction: column;
+}
+
+.headercont .top-separator {
+    width: 100%;
+    height: 15px;
+    background-image: url('../img/home/degrade.jpg');
+}
+
+.headercont .top-presentation {
+    width: 100%;
+    display: flex;
+}
+
+.top-presentation > div:nth-last-of-type(2) {
+    text-shadow: 2px 2px;
+    transition: all;
+}
+
+.top-presentation > div:nth-of-type(1),
+.top-presentation > div:nth-of-type(3) {
+    width: 100%;
+    height: 80px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.top-presentation > div:nth-of-type(1), div:nth-of-type(3) > img {
+    justify-content: flex-start;
+    border-radius: 5px;
+    box-shadow: 5px 2px 15px;
+}
+
+.top-presentation > div:nth-of-type(1), div:nth-of-type(1) > img {
+    justify-content: flex-end;
+    border-radius: 5px;
+    box-shadow: 5px 2px 15px;
+}
+
+.top-presentation > div:nth-of-type(2) {
+    flex: 6
+}
+
+.mov-title {
+    font-size: 3em;
+    text-align: center;
+}
