@@ -16,11 +16,9 @@ function SourceLst() {
 
     let dragStarted = e => {
         dragItem.current = 0
-        console.log(e.target);
     }
     const dragEnter = (e) => {
         dragOverItem.current = 0;
-        console.log(e.target);
     }
 
     return (
@@ -98,7 +96,6 @@ function TargetList() {
     let {currentScore, setCurretScore, winners} = useContext(MyContext)
 
     useEffect(() => {
-        console.log('ESTE SE ACTIVA SOLO SI CAMBIA EL CURRENT PAGE')
         setArr(new Array(4).fill(0).map((z, i) => <DropBox dropHandler={setKeyAffected} key={i} idx={i}></DropBox>))        
     }, [currentPage])
 
@@ -106,15 +103,9 @@ function TargetList() {
         if (keyAffected === -1) {
             return;
         }
-        console.log('Key affected')
-        console.log(keyAffected)
-        console.log(arr)
-
+        
         let Insert = () => (<img className="playImage" draggable="false" src={imgArr[currentPage]} />)
 
-        console.log('DROP')
-        console.log(keyAffected)
-        console.log(arr)
         let newArr = [...arr]
         newArr.splice(keyAffected, 1)
         newArr.splice(keyAffected, 0, <Insert key={Date.now()}></Insert>)
@@ -139,8 +130,6 @@ function TargetList() {
     function dropCapture(i) {        
         let Insert = () => (<img className="playImage" src={imgArr[currentPage]} />)
 
-        console.log('DROP')
-        console.log(i)
         let newArr = [...arr]
         newArr.splice(i, 1)
         newArr.splice(i, 0, <Insert key={Date.now()}></Insert>)

@@ -29,9 +29,6 @@ function Title() {
 function MessiQatar() {
     let {currentScore, setCurretScore} = useContext(MyContext)
 
-    console.log('******************************')
-    console.log('******************************')
-    console.log('******************************')
     return (
         <div className="last-page">
             <div>YOU SCORE {currentScore}/4, THATS ALL FOLKS !!!</div>
