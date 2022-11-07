@@ -64,20 +64,6 @@ function ReferenceList(props) {
     )
 }
 
-function Next(props) {
-    let img = "./img/src/arrow.png"
-
-    let {currentPage, setCurrentPage} = useContext(MyContext)
-
-    let triggerNext = () => { setCurrentPage(currentPage + 1) }
-
-    return (
-        <>
-            <img className="imgNext" onClick={triggerNext} src={img} alt="next"></img>
-        </>
-    )
-}
-
 let DropBox = props => (
     <div className="drop-here-space" 
                             key={props.idx} onDrop={e => props.dropHandler(props.idx)}>
