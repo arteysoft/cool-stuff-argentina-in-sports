@@ -26,9 +26,43 @@ function Title() {
     )
 }
 
+function MessiQatar() {
+    let {currentScore, setCurretScore} = useContext(MyContext)
+
+    console.log('******************************')
+    console.log('******************************')
+    console.log('******************************')
+    return (
+        <div className="last-page">
+            <div>YOU SCORE {currentScore}/4, THATS ALL FOLKS !!!</div>
+            <img src="./img/home/messi-qatar.jpeg"></img>
+        </div>
+    )    
+}
+
+function MainPage() {
+    let {currentPage, setCurrentPage} = useContext(MyContext)
+
+    if (currentPage < 4) {
+        return (
+            <>
+            <Title />
+            <Game />
+            </>
+        ) 
+    } else { return (
+            <>
+            <MessiQatar />
+            </>
+        )
+    }
+}
+
 export default () => {
     let [currentPage, setCurrentPage] = useState(0)
     let [currentTargetList, setCurrentTargetList] = useState([])
+    let [currentScore, setCurretScore] = useState(0)
+    let winners = [0, 3, 2, 2]
 
     let imgArr = [
         "./img/src/characters/fangio.jpg", 
@@ -39,16 +73,17 @@ export default () => {
 
     return (
         <>
-        <MyContext.Provider value={{currentPage, setCurrentPage, imgArr, currentTargetList, setCurrentTargetList}}>
+        <MyContext.Provider value={{currentPage, setCurrentPage,                                     
+                                    currentTargetList, setCurrentTargetList, 
+                                    imgArr, winners,
+                                    currentScore, setCurretScore}}>
         <Config />
         <MyHeader />
         
         <main>
             <div className="maincont">
-                <Title />
-                <Game />
+                <MainPage />
             </div>
-            
         </main>
         <footer></footer>
         </MyContext.Provider>

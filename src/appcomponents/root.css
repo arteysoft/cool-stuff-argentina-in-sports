@@ -6,3 +6,28 @@ header {
     display: flex;
     flex-direction: column;
 }
+
+
+
+
+
+
+/* Esto hay que separarlo */
+
+.last-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+}
+
+.last-page > div {
+    width: 100%;
+    font-family: 'Courier New';
+    font-size: 2.5em;
+    font-weight: bolder;
+    line-height: 120px;
+    /* color: hsla(50, 15, 100, .8); */
+}

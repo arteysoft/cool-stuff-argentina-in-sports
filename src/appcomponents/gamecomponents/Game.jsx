@@ -33,8 +33,7 @@ function SourceLst() {
     )
 }
 
-function ReferenceList(props) {
-    let winners = [0, 3, 2, 2]
+function ReferenceList(props) {    
     let source = [[
             "./img/src/formula1/williams.jpg", 
             "./img/src/formula1/mercedes.jpg", 
@@ -72,13 +71,7 @@ function Next(props) {
 
     let {currentPage, setCurrentPage} = useContext(MyContext)
 
-    let triggerNext = () => {
-        if (currentPage === 3) {
-            setCurrentPage(0)
-            return
-        }
-        setCurrentPage(currentPage + 1)
-    }
+    let triggerNext = () => { setCurrentPage(currentPage + 1) }
 
     return (
         <>
@@ -102,10 +95,11 @@ function TargetList() {
 
     let {imgArr} = useContext(MyContext)
     let {currentPage, setCurrentPage} = useContext(MyContext)
+    let {currentScore, setCurretScore, winners} = useContext(MyContext)
 
     useEffect(() => {
         console.log('ESTE SE ACTIVA SOLO SI CAMBIA EL CURRENT PAGE')
-        setArr(new Array(4).fill(0).map((z, i) => <DropBox dropHandler={setKeyAffected} key={i} idx={i}></DropBox>))
+        setArr(new Array(4).fill(0).map((z, i) => <DropBox dropHandler={setKeyAffected} key={i} idx={i}></DropBox>))        
     }, [currentPage])
 
     useEffect(() => {
@@ -128,14 +122,19 @@ function TargetList() {
         console.log(newArr)
         setKeyAffected(-1)        
         setTimeout(() => {
-            if (currentPage === 3) {
-                setCurrentPage(0)
-                return
-            }
             setCurrentPage(currentPage + 1)
         }, 200)
     }, [keyAffected])
 
+    useEffect(() => {
+        if (keyAffected === -1) {
+            return;
+        }
+        
+        if (winners[currentPage] === keyAffected) {
+            setCurretScore(currentScore + 1)
+        }        
+    }, [keyAffected])
 
     function dropCapture(i) {        
         let Insert = () => (<img className="playImage" src={imgArr[currentPage]} />)
@@ -158,15 +157,11 @@ function TargetList() {
 function Game() {
     let {currentPage, setCurrentPage} = useContext(MyContext)
     let {currentTargetList, setCurrentTargetList} = useContext(MyContext)
+    let {currentScore, setCurretScore} = useContext(MyContext)
 
     let setCurrentPageWrapper = () => {
         let cp = currentPage;
-        if (cp < 3) {
-            setCurrentPage(cp + 1)
-        }
-        else {
-            setCurrentPage(0)
-        }
+        setCurrentPage(cp + 1)
     }
 
     let dragOverCapture = e => {
